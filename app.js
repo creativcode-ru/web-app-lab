@@ -71,7 +71,7 @@ async function unregister() {
 };
 
 
-// Отображение результата
+// Отображение сообщения
 function showResult(text) {
     document.querySelector("output").innerHTML = text;
 }
