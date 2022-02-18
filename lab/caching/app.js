@@ -13,7 +13,7 @@ async function cacheSingleFile() {
     if ('caches' in window) {
         try {
             const cache = await caches.open(cacheName);
-            //await cache.add("app.js") //dummy.json - json не загружается, кодировка русского языка портится ########################
+            await cache.add("app.js") //dummy.json - json не загружается, кодировка русского языка портится ########################
             //await cache.add(new Request('app.js'))
 
             /* не удается прочитать json ################
@@ -36,7 +36,7 @@ async function cacheSingleFile() {
             await cache.add(new Response('app.js'))
             */
 
-            showResult("dummy.json кеширован в " + cacheName);
+            showResult("файл кеширован в " + cacheName);
 
         } catch (error) {
             showResult("Ошибка при кешировании одиночного файла " + error.message);
