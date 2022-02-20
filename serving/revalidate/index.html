@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Serving Assets Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Сначала кеш,потом сеть
+        </h1>
+        <p class="instructions">
+            Это приложение должно работать в автономном режиме. <br />
+            Попробуйте отключить сеть или использовать DevTools для имитации автономной работы и перезагрузить страницу, она все еще должна работать. Shift-Reload не должен загружать страницу в автономном режиме.
+        </p>
+        <p class="instructions">
+            Service Worker, который мы регистрируем, использует шаблон stale-while-revalidate.
+            Каждый раз, когда вы перезагружаетесь, color.json загружается из кеша, но также обновляется.
+            с сервера с новым цветом, который случайным образом меняется с помощью скрипта Node.js.
+            Вам придется перезагрузить, чтобы увидеть новый кешированный цвет CSS в действии;
+            вы также можете открыть DevTools и проверить содержимое файла.
+        </p>
+        <section class="toolbar">
+            <button id="reload">Обновить страницу</button>
+            <button id="check">Проверить кеш</button>
+        </section>
+        <img id="dogImg" alt="" />
+        <output></output>
+    </div>
+</body>
+</html>
+<!--
+    Бесплатные API для тестирования  https://apipheny.io/free-api/
+    Случайные изображениями собак https://dog.ceo/api/breeds/image/random
+-->

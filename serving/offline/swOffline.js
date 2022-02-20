@@ -15,10 +15,10 @@ self.addEventListener("fetch", event => {
                 console.log(`cachedResponse: ОШИБКА КЕША`); //надо перезапустить сервис-воркер... 
                 return 
             }
-
             // It can update the cache to serve updated content on the next request
             return cachedResponse || fetch(event.request);
         }
+           
         )
         //######## нет обработки ошибок - при удаленя кеша - перестает работать вообще
     )
