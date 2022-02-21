@@ -5,12 +5,12 @@ window.addEventListener("DOMContentLoaded", async event => {
    /* document.querySelector("#delete").addEventListener("click", deleteCache);*/
 });
 
-const DOG_API ="https://dog.ceo/api/breeds/image/random";
+const DOG_API ="https://dog.ceo/api/breeds/image/random"; //анонимное api случайных картинок собак. Для тестирования
 
 async function fromNet() {
     //Использование Fetch Api https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch
 
-    //document.getElementById("dogImg").src = "";//удаляю чтобы видеть загрузку каринки
+    //document.getElementById("dogImg").src = "";//TEST: удаляю чтобы видеть загрузку каринки
 
     fetch(DOG_API)
         .then((res) => {
@@ -27,8 +27,8 @@ async function fromNet() {
            
         })
         .then((data) => { //затем обрабатываем полученные json данные
-            document.getElementById("dogImg").src = data.message; 
-            showResult("Загружена картинка: " + data.message);
+            document.getElementById("dogImg").src = data.message; //получаем только имя картинки, сама картинка грузится браузером автоматически, при изменеии src
+            showResult("Новая картинка: " + data.message);
         })
         .catch((e) => {
             showResult("Ошибка запроса: " + e.message);
