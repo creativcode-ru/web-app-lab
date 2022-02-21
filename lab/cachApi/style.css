@@ -1,0 +1,50 @@
+﻿body {
+    font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+}
+
+.container {
+    margin: 2em;
+}
+
+h1, h4 {
+    text-align: center;
+}
+
+
+
+.instructions {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.center {
+    width:70%;
+    margin:3rem auto;
+    max-height:50vh;
+}
+
+.toolbar {
+    width: 100%;
+    display: flex;
+    margin-top: 16px;
+    justify-content: center;
+}
+
+output {
+    display: block;
+    color: gray;
+    margin: 32px 16px;
+    text-align: center;
+    border: 1px silver dashed;
+    padding: 16px;
+    border-radius: 16px;
+}
+button {
+    display: block;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 0 8px;
+    text-transform: uppercase;
+}

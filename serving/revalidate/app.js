@@ -34,7 +34,6 @@ async function loadMessage() {
 }
 
 
-
 async function checkImage() {
     const cache = await caches.open("pwa-assets");
     const result = await cache.match("https://dog.ceo/api/breeds/image/random"); //читаем из кеша
@@ -42,7 +41,6 @@ async function checkImage() {
     if (result) {
         const value = await result.json();
         document.getElementById("dogImg").src = value.message; //это приведет к кешировании картинки - все запросы кешируются
-
 
         showResult("Кешированное сообщение: " + value.message);
     } else {

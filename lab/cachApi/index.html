@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Api кеширования</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            Api кеширования
+        </h1>
+        <p class="instructions">
+            Берем картинку из сети, и помещаем её в кеш. Если сеть отключена - берем картинку из кеша.<br />
+            Без сети работать не будет, т.к. сам url не будет обслуживаться броузером
+        </p>
+        <label>
+            Имя кеша
+            <input id="cacheName" placeholder="Enter a cache name" value="Learn-PWA" />
+        </label>
+        <h4>Случайная картинка</h4>
+        <section class="toolbar">
+            <button id="btNet">Из сети</button>
+            <button id="btCache">Из кеша</button>
+            <!--<button id="delete">Удалить кеш</button>-->
+        </section>
+        <div class="center" >
+            <img id="dogImg"  alt="" />
+        </div>
+        <output></output>
+    </div>
+</body>
+</html>
