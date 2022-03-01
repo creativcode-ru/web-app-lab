@@ -1,14 +1,14 @@
 ﻿// подключаем кнопки
 window.addEventListener("DOMContentLoaded", async event => {
     document.querySelector("#btNet").addEventListener("click", fromNet);
-    //document.querySelector("#btCache").addEventListener("click", fromCache);
+    document.querySelector("#btCache").addEventListener("click", RetrieveAllCache); //fromCache
    /* document.querySelector("#delete").addEventListener("click", deleteCache);*/
 });
 
 const DOG_API = "https://dog.ceo/api/breeds/image/random"; //анонимное api случайных картинок собак. Для тестирования
-const CACHE_NAME = "dog.ceo/api/breeds/image/random";
+const CACHE_NAME = "dog.ceo/api/breeds/image/random"; //можем для каждого url делать отдельный кеш
 
-/* Прочитать данные из внешнего Api 
+/* Прочитать данные из внешнего Api ===============================================================================
  */
 async function fromNet() {
     //Использование Fetch Api https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch
@@ -88,3 +88,45 @@ function showResult(text) {
     document.querySelector("output").innerHTML = text;
 }
 
+/* Прочитать данные из кеша ===============================================================================
+ * Первые шаги с Cache API https://www.digitalocean.com/community/tutorials/js-cache-api
+ */
+async function fromCache() {
+    if ('caches' in window) {
+        try {
+            const cache = await caches.open(CACHE_NAME);
+            await cache.add(imgUrl);
+            showResult("файл " + imgUrl + "кеширован в " + cacheName);
+        } catch (error) {
+            showResult("Ошибка кеширования " + error.message);
+        }
+    } else {
+        showResult("Хранилище кеша не поддерживается.");
+    }
+}
+
+// Получить все элементы из конкретного кэша ########################### ############################# ####################
+
+async function RetrieveAllCache() {
+    try {
+        caches.open(CACHE_NAME).then((cache) => {
+            cache.keys().then((arr) => { //массиввсех элементов в кеше
+                if (arr.length > 0) {
+                    //отобразить картинку ###################### как отобразить картинку из кеша...
+                    //var dogImg = document.getElementById("dogImg").src = arr[0];
+                    // Blob https://learn.javascript.ru/blob
+
+                    //var image = new Image();
+                    //image.src = URL.createObjectURL(arr[0]);
+                    //document.body.appendChild(image);
+
+                    console.log(arr[0]); // [Request,  Request]
+                } else {
+                    showResult("Кеш " + CACHE_NAME + " пустой");
+                }
+            });
+        });
+    } catch (error) {
+        showResult("Ошибка кеширования " + error.message);
+    }
+}
