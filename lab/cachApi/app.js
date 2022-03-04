@@ -57,7 +57,7 @@ async function deleteCache(cacheName) {
             });
 
             //await caches.delete(cacheName); //caches -- удаляет весь кеш по имени. Метод CacheStorage
-            //полная очистка всех кешей https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/delete
+            //полная очистка конкретного кеша https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/delete
 
            
         } catch (error) {
