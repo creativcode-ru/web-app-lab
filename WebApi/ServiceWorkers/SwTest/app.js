@@ -1,8 +1,9 @@
 ﻿// Регистрация сервис-воркера
+// https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers#registering_your_worker
 
 if ('serviceWorker' in navigator) {
     // navigator.serviceWorker.register('/sw-test/sw.js', { scope: '/sw-test/' }).then(function (reg) {
-    navigator.serviceWorker.register('swTest.js').then(function (reg) {
+    navigator.serviceWorker.register('swTest.js').then(function (reg) { //успешное выполнение промиса
         var msg;
         if (reg.installing) {
             msg = 'Service worker устанавливается';
@@ -16,28 +17,35 @@ if ('serviceWorker' in navigator) {
         console.log(msg);
         showResult(msg);
 
-    }).catch(function (error) {
+    }).catch(function (error) {//промис отклонен
         console.log('Регистрация не удалась ' + error);
     });
 }
 
-// загрузка изображения с сервера через XHR
+// загрузка изображения с сервера через XHR 
+// https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers#service_workers_demo
 
 function imgLoad(imgJSON) {
-    // вернуть промис для загрузки изображения
+    // вернуть промис для загрузки изображения 
+    // Первый аргумент (resolve) вызывает успешное исполнение промиса, второй (reject) отклоняет его.
+    // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
     return new Promise(function (resolve, reject) {
         var request = new XMLHttpRequest();
         request.open('GET', imgJSON.url);
         request.responseType = 'blob';
 
+        //все данные промиса должны быть получены внутри промиса
+        //промисы разрешаются только с одним аргументом, поэтому, если вы хотите разрешить несколько значений, 
+        // вам нужно использовать массив/объект.
         request.onload = function () {
             if (request.status == 200) {
                 var arrayResponse = [];
                 arrayResponse[0] = request.response;
                 arrayResponse[1] = imgJSON;
-                resolve(arrayResponse);
+                resolve(arrayResponse);  //==> возвращаем массив JSON Gallery.images (см. image-list.js)
             } else {
-                reject(Error('Картинка не может быть загружена:' + request.statusText));
+                reject(Error('Картинка не может быть загружена:' + request.statusText)); //==> отклонение промиса
             }
         };
 
