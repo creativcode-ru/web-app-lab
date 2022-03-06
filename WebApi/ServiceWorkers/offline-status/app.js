@@ -1,6 +1,6 @@
 ﻿// This file is required to make the "app" work offline
 
-//кнопка [Случайная картинка]
+// кнопка [Случайная картинка]
 document.getElementById('randomButton').addEventListener('click', function () {
     var image = document.getElementById('logoImage');
     var currentIndex = Number(image.src.match('random-([0-9])')[1]);
@@ -18,6 +18,7 @@ document.getElementById('randomButton').addEventListener('click', function () {
     }
 });
 
+// кнопка [Перепзапустить]
 document.getElementById('clearAndReRegister').addEventListener('click',
     function () {
         navigator.serviceWorker.getRegistration().then(function (registration) {

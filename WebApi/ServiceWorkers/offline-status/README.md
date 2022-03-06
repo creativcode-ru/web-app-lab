@@ -9,7 +9,7 @@
 ### 📘 документация
 [◻ событие ServiceWorkerContainer.oncontrollerchange, MDN](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/oncontrollerchange)  
 [◻ обработчик ServiceWorker.onstatechange, MDN](https://developer.mozilla.org/ru/docs/Web/API/ServiceWorker/onstatechange)  
-[◻ ]()  
+[◻ Clients.claim(), MDN](https://developer.mozilla.org/ru/docs/Web/API/Clients/claim)  
 
 ### дополнительно  
 [◻ Поваренная книга ServiceWorker, MDN Github](https://github.com/mdn/serviceworker-cookbook)  

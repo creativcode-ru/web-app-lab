@@ -51,13 +51,17 @@ self.addEventListener('fetch', function (event) {
     );
 });
 
-// событие активации сервис воркера
+// передача контроля воркеру - можно перейти в Офлайн
 self.addEventListener('activate', function (event) {
     console.log('[activate] ServiceWorker активирован!');
 
-    // Calling claim() to force a "controllerchange" event on navigator.serviceWorker
-    // Вызов Claim() для форсирования события «controllerchange» в navigator.serviceWorker
-    // - событие передается в исходный код 
+    /* Вызывает событие "controllerchange" на navigator.serviceWorker всех клиентских страниц, 
+     * контролируемых сервис-воркером.
+     */
     console.log('[activate] уведомление от воркера!');
     event.waitUntil(self.clients.claim());
+    /* Метод claim() позволяет установить контроль над страницами немедленно. 
+     * Имейте в виду, что в этом случае ваш сервис-воркер будет контролировать 
+     * все загружаемые по сети страницы этого origin, в т. ч. из других сервис-воркеров.
+     */
 });
