@@ -31,7 +31,7 @@ document.querySelector('#refresh').search = Date.now();
 // Debug helper
 function debug(message, element, append) {
     var target = document.querySelector('#' + (element || 'log'));
-    target.textContent = message + ((append) ? ('/n' + target.textContent) : '');
+    target.textContent = message + ((append) ? ('/n</br>' + target.textContent) : '');
 }
 
 // Allow for "replaying" this example
